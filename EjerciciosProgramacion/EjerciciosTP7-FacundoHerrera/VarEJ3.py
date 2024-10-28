@@ -4,7 +4,7 @@
 #n = 10
 
 #Parte 2 - Pedir datos
-Ci = int(input('Ingresar el valor inicial: '))
+Ci = int(input('Ingresar el valor del capital inicial: '))
 i = float(input('Indicar el valor de interes (En decimales): '))
 n = int(input('Indicar cantidad de ciclos/años: '))
 Cf = Ci *(1 + i)**n
