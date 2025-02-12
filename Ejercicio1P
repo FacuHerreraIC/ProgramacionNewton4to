@@ -1,0 +1,319 @@
+### **Exercise 1: Hello World!**
+**Objective**: Create a simple window with a label that says "Hello, World!".
+
+**Steps**:
+1. Create a `Tkinter` window.
+2. Add a label widget with the text "Hello, World!".
+3. Display the window.
+
+**Solution**:
+```python
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+root.title("Hello World")
+
+# Add a label
+label = tk.Label(root, text="Hello, World!")
+label.pack()
+
+# Run the application
+root.mainloop()
+```
+
+---
+
+### **Exercise 2: Button Click**
+**Objective**: Create a window with a button. When the button is clicked, display a message.
+
+**Steps**:
+1. Create a `Tkinter` window.
+2. Add a button widget.
+3. Write a function that displays a message when the button is clicked.
+4. Link the button to the function.
+
+**Solution**:
+```python
+import tkinter as tk
+from tkinter import messagebox
+
+# Function to display a message
+def show_message():
+    messagebox.showinfo("Message", "You clicked the button!")
+
+# Create the main window
+root = tk.Tk()
+root.title("Button Click")
+
+# Add a button
+button = tk.Button(root, text="Click Me", command=show_message)
+button.pack()
+
+# Run the application
+root.mainloop()
+```
+
+---
+
+### **Exercise 3: Simple Calculator**
+**Objective**: Create a simple calculator that adds two numbers.
+
+**Steps**:
+1. Create a `Tkinter` window.
+2. Add two entry widgets for user input.
+3. Add a button to perform the addition.
+4. Display the result in a label.
+
+**Solution**:
+```python
+import tkinter as tk
+
+# Function to add two numbers
+def add_numbers():
+    num1 = float(entry1.get())
+    num2 = float(entry2.get())
+    result = num1 + num2
+    result_label.config(text=f"Result: {result}")
+
+# Create the main window
+root = tk.Tk()
+root.title("Simple Calculator")
+
+# Add entry widgets
+entry1 = tk.Entry(root)
+entry1.pack()
+
+entry2 = tk.Entry(root)
+entry2.pack()
+
+# Add a button
+add_button = tk.Button(root, text="Add", command=add_numbers)
+add_button.pack()
+
+# Add a label to display the result
+result_label = tk.Label(root, text="Result: ")
+result_label.pack()
+
+# Run the application
+root.mainloop()
+```
+
+---
+
+### **Exercise 4: To-Do List**
+**Objective**: Create a simple to-do list application.
+
+**Steps**:
+1. Create a `Tkinter` window.
+2. Add an entry widget for task input.
+3. Add a button to add the task to a list.
+4. Display the list of tasks in a label or listbox.
+
+**Solution**:
+```python
+import tkinter as tk
+
+# Function to add a task
+def add_task():
+    task = task_entry.get()
+    if task:
+        task_listbox.insert(tk.END, task)
+        task_entry.delete(0, tk.END)
+
+# Create the main window
+root = tk.Tk()
+root.title("To-Do List")
+
+# Add an entry widget
+task_entry = tk.Entry(root)
+task_entry.pack()
+
+# Add a button
+add_button = tk.Button(root, text="Add Task", command=add_task)
+add_button.pack()
+
+# Add a listbox to display tasks
+task_listbox = tk.Listbox(root)
+task_listbox.pack()
+
+# Run the application
+root.mainloop()
+```
+
+---
+
+### **Exercise 5: Drawing App**
+**Objective**: Create a simple drawing app where the user can draw on a canvas.
+
+**Steps**:
+1. Create a `Tkinter` window.
+2. Add a canvas widget.
+3. Allow the user to draw on the canvas using the mouse.
+
+**Solution**:
+```python
+import tkinter as tk
+
+# Function to draw on the canvas
+def draw(event):
+    x, y = event.x, event.y
+    canvas.create_oval(x, y, x+5, y+5, fill="black")
+
+# Create the main window
+root = tk.Tk()
+root.title("Drawing App")
+
+# Add a canvas
+canvas = tk.Canvas(root, width=400, height=400, bg="white")
+canvas.pack()
+
+# Bind mouse movement to the draw function
+canvas.bind("<B1-Motion>", draw)
+
+# Run the application
+root.mainloop()
+```
+
+---
+
+### **Exercise 6: Temperature Converter**
+**Objective**: Create a temperature converter that converts Celsius to Fahrenheit.
+
+**Steps**:
+1. Create a `Tkinter` window.
+2. Add an entry widget for Celsius input.
+3. Add a button to perform the conversion.
+4. Display the result in a label.
+
+**Solution**:
+```python
+import tkinter as tk
+
+# Function to convert Celsius to Fahrenheit
+def convert():
+    celsius = float(celsius_entry.get())
+    fahrenheit = (celsius * 9/5) + 32
+    result_label.config(text=f"Fahrenheit: {fahrenheit:.2f}")
+
+# Create the main window
+root = tk.Tk()
+root.title("Temperature Converter")
+
+# Add an entry widget
+celsius_entry = tk.Entry(root)
+celsius_entry.pack()
+
+# Add a button
+convert_button = tk.Button(root, text="Convert", command=convert)
+convert_button.pack()
+
+# Add a label to display the result
+result_label = tk.Label(root, text="Fahrenheit: ")
+result_label.pack()
+
+# Run the application
+root.mainloop()
+```
+
+---
+
+### **Exercise 7: Quiz App**
+**Objective**: Create a simple quiz app with multiple-choice questions.
+
+**Steps**:
+1. Create a `Tkinter` window.
+2. Display a question and multiple-choice answers using radio buttons.
+3. Add a button to check the answer.
+4. Display whether the answer is correct or incorrect.
+
+**Solution**:
+```python
+import tkinter as tk
+from tkinter import messagebox
+
+# Function to check the answer
+def check_answer():
+    if selected.get() == correct_answer:
+        messagebox.showinfo("Result", "Correct!")
+    else:
+        messagebox.showinfo("Result", "Incorrect!")
+
+# Create the main window
+root = tk.Tk()
+root.title("Quiz App")
+
+# Question and answers
+question = "What is the capital of France?"
+answers = ["Paris", "London", "Berlin", "Madrid"]
+correct_answer = "Paris"
+
+# Display the question
+question_label = tk.Label(root, text=question)
+question_label.pack()
+
+# Add radio buttons for answers
+selected = tk.StringVar()
+for answer in answers:
+    rb = tk.Radiobutton(root, text=answer, variable=selected, value=answer)
+    rb.pack()
+
+# Add a button to check the answer
+check_button = tk.Button(root, text="Check Answer", command=check_answer)
+check_button.pack()
+
+# Run the application
+root.mainloop()
+```
+
+---
+
+### **Exercise 8: Timer App**
+**Objective**: Create a countdown timer app.
+
+**Steps**:
+1. Create a `Tkinter` window.
+2. Add an entry widget for the countdown time.
+3. Add a button to start the timer.
+4. Display the remaining time in a label.
+
+**Solution**:
+```python
+import tkinter as tk
+
+# Function to start the timer
+def start_timer():
+    try:
+        seconds = int(time_entry.get())
+        countdown(seconds)
+    except ValueError:
+        messagebox.showerror("Error", "Please enter a valid number.")
+
+# Function to update the timer
+def countdown(seconds):
+    if seconds > 0:
+        timer_label.config(text=f"Time left: {seconds} seconds")
+        root.after(1000, countdown, seconds - 1)
+    else:
+        timer_label.config(text="Time's up!")
+
+# Create the main window
+root = tk.Tk()
+root.title("Timer App")
+
+# Add an entry widget
+time_entry = tk.Entry(root)
+time_entry.pack()
+
+# Add a button
+start_button = tk.Button(root, text="Start Timer", command=start_timer)
+start_button.pack()
+
+# Add a label to display the timer
+timer_label = tk.Label(root, text="Time left: ")
+timer_label.pack()
+
+# Run the application
+root.mainloop()
+```
+
